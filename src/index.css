@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cinzel", serif;
+  --font-script: "Great Vibes", cursive;
+  --font-sans: "Lato", sans-serif;
+
+  --color-editorial-base: #FDFCFB;
+  --color-editorial-dark: #4A3E31;
+  --color-editorial-muted: #96735a;
+  --color-editorial-border: #e6dfd4;
+  --color-editorial-contrast: #f2efe9;
+
+  --color-wedding-50: var(--color-editorial-base);
+  --color-wedding-100: var(--color-editorial-contrast);
+  --color-wedding-200: var(--color-editorial-border);
+  --color-wedding-300: var(--color-editorial-muted);
+  --color-wedding-500: #b08d71; 
+  --color-wedding-900: var(--color-editorial-dark);
+}
+
+@layer base {
+  body {
+    @apply bg-editorial-base text-editorial-dark antialiased font-sans;
+  }
+}
+
+.vertical-rail {
+  writing-mode: vertical-rl;
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-editorial-border);
+}
+
+@media print {
+  @page {
+    /* Define the page size slightly larger and taller to allow margins and fit everything */
+    size: 480px 1320px;
+    margin: 0;
+  }
+  
+  html, body {
+    width: 480px !important;
+    height: 1320px !important;
+    background-color: var(--color-editorial-base) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    margin: 0 !important;
+    padding: 0 16px !important; /* Add some lateral margin */
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    page-break-inside: avoid;
+  }
+
+  .print-hidden, .no-print {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-hero {
+    height: 450px !important;
+    width: 480px !important;
+    max-width: none !important;
+    margin-left: -16px !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+}
